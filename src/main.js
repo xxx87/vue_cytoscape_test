@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import "@/plugins/cytoscape";
+// import "@/plugins/cytoscape";
 import store from './store'
 
 Vue.config.productionTip = false
