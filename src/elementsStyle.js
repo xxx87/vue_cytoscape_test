@@ -26,7 +26,12 @@ let edgeStyle = {
   "text-max-width": 80,
   "curve-style": "bezier",
   width: 4,
-  label: "data(name)",
+  // label: "data(id)",
+  label: function(event) {
+    let id = event.data("id");
+    let name = event.data("name");
+    return Boolean(name) ? name : "";
+  },
   "line-color": "#dddddd",
   "target-arrow-color": "#dddddd",
   "source-arrow-color": "#dddddd",
@@ -38,7 +43,12 @@ let edgeStyle = {
 let selectedEdgeCss = {
   "curve-style": "bezier",
   width: 4,
-  label: "data(name)",
+  // label: "data(name)",
+  label: function(event) {
+    let id = event.data("id");
+    let name = event.data("name");
+    return Boolean(name) ? name : "";
+  },
   "line-color": "#777777",
   "target-arrow-color": "#777777",
   "source-arrow-color": "#777777",

@@ -89,47 +89,26 @@ app.get("/nodes/:routecode", async (request, response) => {
 
   responseArray = nodesObj.concat(edgesObj);
   response.status(200).json(responseArray);
-  // console.log(nodes);
-  //   ,
-  //   (error, results) => {
-  //     if (error) {
-  //       throw error;
-  //     }
-  //     // console.log(results.rows);
-  //     let newData = results.rows.map((item) => {
-  //       return {
-  //         data: {
-  //           id: item.id,
-  //           code: item.code,
-  //           name: "Node_" + item.id,
-  //           nodeType: item.blocktype,
-  //           maxCharInRow: 20,
-  //           textMarginY: 15,
-  //           shape: "roundrectangle",
-  //           width: 150,
-  //           height: 100,
-  //           color: "grey",
-  //           textOutlineColor: "#bcbcbc",
-  //           textColor: "black",
-  //           image: "../bp/NodeTask.png",
-  //           imagePositionX: "50%",
-  //           imagePositionY: "0",
-  //           imageWidth: "40",
-  //           imageHeight: "40",
-  //           imageFitType: "none"
-  //         },
-  //         position: { x: parseInt(item.xPos), y: parseInt(item.yPos) }
-  //       };
-  //     });
-  //     // console.log(newData);
-  //     response.status(200).json(newData);
-  //   }
-  // );
 });
 app.get("/edges/:routecode", (request, response) => {
   const rCode = request.params.routecode;
   pool.query(
     `SELECT * FROM wflink WHERE "wftypicalrouteRef" = '${rCode}'`,
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(200).json(results.rows);
+    }
+  );
+});
+
+app.put("/update", (request, response) => {
+  const { code, newPos } = request.body
+  console.log("code: ", code);
+  console.log("pos: ", newPos);
+  pool.query(
+    `UPDATE wfnode SET "xPos" = '${newPos.x}', "yPos" = '${newPos.y}' WHERE "code" = '${code}'`,
     (error, results) => {
       if (error) {
         throw error;
