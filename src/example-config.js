@@ -9,7 +9,9 @@ const config = {
   layout: {
     name: "preset"
   },
-
+  zoom: 0.7,
+  pan: { x: 0, y: 0 },
+  wheelSensitivity: 0.2,
   // so we can see the ids
   style: [
     {

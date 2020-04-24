@@ -54,7 +54,7 @@ app.get("/nodes/:routecode", async (request, response) => {
         shape: "roundrectangle",
         width: 150,
         height: 100,
-        color: "grey",
+        color: "lightgrey",
         textOutlineColor: "#bcbcbc",
         textColor: "black",
         image: "../bp/NodeTask.png",
