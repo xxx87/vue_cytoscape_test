@@ -2,19 +2,14 @@
   <v-app id="app">
     <div class="my_app">
       <div class="my_app_div1">
-        <v-btn>BTN</v-btn>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem sapiente
+        praesentium, tenetur modi aspernatur pariatur, eum in neque velit
+        assumenda nisi vitae impedit. Minus maiores in qui amet dolore atque.
       </div>
       <div class="my_app_div2">
-        <v-btn v-model="btn_left" @click="btn_left = !btn_left"
-          >Left panel hide</v-btn
-        >
-        <v-btn v-model="btn_right" @click="btn_right = !btn_right"
-          >Right panel hide</v-btn
-        >
-      </div>
-      <div class="my_app_div3">
+        <v-btn v-model="btn" @click="btn = !btn">Right panel hide</v-btn>
         <cytoscape
-          class="cy"
+          id="cy"
           ref="cyto"
           :config="config"
           :preConfig="preConfig"
@@ -27,10 +22,15 @@
             v-on:mouseup="getPositionCurrentNode"
           />
         </cytoscape>
+        <div class="my_app_div3" :class="{ hide_div: btn }">
+          :style="{visibility: 'hidden'}" Lorem ipsum dolor sit, amet
+          consectetur adipisicing elit. Quidem ipsum dignissimos mollitia
+          commodi, alias consequatur odio, quos quis officiis harum totam iste
+          tempora cum inventore? Enim ab cum et illo?
+        </div>
       </div>
     </div>
-    <!--  :class="{ hide_div: btn }" -->
-    <!-- :style="{visibility: 'hidden'}" -->
+
     <!-- <v-container fill-height class="con1">
       <v-navigation-drawer absolute class="draw" dark permanent> </v-navigation-drawer>
       <div class="con2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur beatae suscipit ad vero? Culpa, maxime, quis mollitia porro dolore nemo animi fugiat sapiente praesentium repellendus vitae nostrum est totam harum.</div>
@@ -66,8 +66,7 @@ export default {
     return {
       elements: [],
       config,
-      btn_left: false,
-      btn_right: false
+      btn: false
     };
   },
   mounted() {
@@ -121,56 +120,30 @@ html {
 .my_app {
   height: 100%;
   border: 1px solid #000;
-  position: relative;
-  z-index: 10;
-  /* display: table; */
-}
-
-.cy,
-.cy > div {
-  height: 100%;
-  border: 1px solid #000;
+  display: table;
 }
 .my_app_div1 {
   border: 1px solid red;
   width: 250px;
-  height: 100%;
-  position: absolute;
-  z-index: 14;
-  background-color: rgb(126, 118, 240);
-  /* display: table-cell; */
+  display: table-cell;
 }
 .my_app_div2 {
-  height: 100%;
-  width: 250px;
-  right: 0;
-  position: absolute;
-  border: 1px solid green;
-  z-index: 14;
-  background-color: rgb(142, 240, 118);
-
-  /* position: relative; */
+  border: 2px solid green;
+  position: relative;
 }
 .my_app_div3 {
-  height: 100%;
-  width: 100%;
   border: 1px solid blue;
   /* display: table-cell; */
-  /* height: 100%; */
-  background-color: rgb(240, 118, 118);
+  width: 250px;
+  height: 100%;
   position: absolute;
-  z-index: 11;
-  /* right: 0; */
+  right: 0;
   /* transition: width .2s linear; */
 }
-
-.btn-3 {
-  margin-left: 50%;
-}
-/* #cy {
+#cy {
   position: absolute;
   border: 1px solid #000;
-} */
+}
 /* .my_app_div3:hover {
   color: red;
 } */

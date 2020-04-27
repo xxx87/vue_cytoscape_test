@@ -11,6 +11,7 @@ const config = {
   },
   zoom: 0.7,
   pan: { x: 0, y: 0 },
+  // height: '800px',
   // wheelSensitivity: 0.2,
   // so we can see the ids
   style: [
