@@ -1,10 +1,10 @@
 <template>
   <v-app id="app">
     <div class="my_app">
-      <div class="my_app_div1">
-        <v-btn>BTN</v-btn>
+      <div class="my_app_div1" :class="[btn_left ? 'hide_div' : 'show_div']">
+        <v-btn v-model="btn_right" @click="btn_right = !btn_right">BTN</v-btn>
       </div>
-      <div class="my_app_div2">
+      <div class="my_app_div2" :class="[btn_right ? 'hide_div' : 'show_div']">
         <v-btn v-model="btn_left" @click="btn_left = !btn_left"
           >Left panel hide</v-btn
         >
@@ -148,7 +148,6 @@ html {
   border: 1px solid green;
   z-index: 14;
   background-color: rgb(142, 240, 118);
-
   /* position: relative; */
 }
 .my_app_div3 {
@@ -179,9 +178,9 @@ html {
   transition: width 0.2s linear;
   width: 250px;*/
   width: 250px;
-  transition: all 0.5s linear;
+  transition: width .2s linear;
 
-  opacity: 1;
+  /* opacity: 1; */
 
   /* display: table-cell; */
 }
@@ -193,7 +192,9 @@ html {
 
   opacity: 0; */
   /* display: none; */
-  visibility: hidden;
+  width: 0px;
+  transition: width .2s linear;
+  /* visibility: hidden; */
   /* width: 0px;
   transition: width .2s linear; */
 }
